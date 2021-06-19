@@ -1,0 +1,7 @@
+{
+  "name": "hack4lem-teams",
+  "version": "1.0.0",
+  "dependencies": {
+    "@microsoft/teamsfx-cli": "^0.2.0"
+  }
+}

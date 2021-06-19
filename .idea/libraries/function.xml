@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="function">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/function/function-triggers.ts.HTTPTrigger.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/function/function-base.ts.default.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/function/function-triggers.js.HTTPTrigger.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/function/function-base.js.default.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

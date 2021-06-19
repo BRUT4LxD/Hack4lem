@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel nauczyciela</title>
+</head>
+<body>
+    <p>CZY JESTEM WIDOCZNY? {{name}}</p>
+    <table>
+        <tr>
+            <th>Autor hejtu</th>
+            <th>Treść hejtu</th>
+            <th>Komentarz zgłaszającego</th>
+        </tr>
+        {{#hates}}
+        <tr>
+            <th>{{hateAuthor}}</th>
+            <th>{{hateMessage}}</th>
+            <th>{{reporterComment}}</th>
+        </tr>
+        {{/hates}}
+    </table>
+</body>
+</html>

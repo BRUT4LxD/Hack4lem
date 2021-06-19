@@ -1,0 +1,15 @@
+{
+  "name": "lem-anti-hate-addon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "content_script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "create-web-ext": "^1.0.0",
+    "web-ext": "^6.1.0"
+  }
+}

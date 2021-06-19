@@ -1,0 +1,39 @@
+{
+	"manifest_version": 2,
+	"name": "Lem Anti Hate",
+	"description": "description",
+	"version": "0.0.1",
+	"icons": {
+		"64": "icons/icon.png"
+	},
+	"background": {
+		"scripts": [
+			"background_script.js"
+		]
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["/content_script.js"],
+			"run_at": "document_end"
+		}
+	],
+	"browser_action": {
+		"default_icon": {
+			"64": "icons/icon.png"
+		},
+		"default_popup": "popup.html",
+		"default_title": "Lem Anti Hate"
+	},
+	"page_action": {
+		"default_icon": {
+			"64": "icons/icon.png"
+		},
+		"default_popup": "pageAction/index.html",
+		"default_title": "Lem Anti Hate"
+	},
+	"options_ui": {
+		"page": "options/index.html"
+	},
+	"permissions": ["*://a3734e843d35.ngrok.io/*","storage", "webRequest"]
+}

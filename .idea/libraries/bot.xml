@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="bot">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/bot/bot.ts.default.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/bot/bot.js.default.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/bot/bot-msgext.ts.default.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/bot/msgext.js.default.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/bot/msgext.ts.default.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/bot/bot-msgext.js.default.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="corpora">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/NLP/corpora/twitter_samples.zip!/" />
+      <root url="jar://$PROJECT_DIR$/NLP/corpora/stopwords.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="frontend">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/frontend/tab.js.default.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/node_modules/@microsoft/teamsfx-core/templates/plugins/resource/frontend/tab.ts.default.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
