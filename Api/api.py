@@ -1,9 +1,15 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 import pickle
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from os import path
+import nltk
+from nltk.tokenize import TweetTokenizer
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+import string
 import re
+import requests
+import json
+
 
 def save_model(name, model):
     with open(name, 'wb') as fid:
@@ -13,40 +19,51 @@ def load_model(name):
     with open(name, 'rb') as fid:
         return pickle.load(fid)
         
-def process_tweet(tweet):
-    return " ".join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])", " ",tweet.lower()).split())
-    
-model = {};        
+logprior = load_model('logprior.pkl')
+loglikelihood = load_model('loglikelihood.pkl')   
 app = Flask(__name__)
 
-def loadModel(): 
-    model = load_model('svm.pkl');
+def process_tweet(tweet):
+    stemmer = PorterStemmer()
+    stopwords_english = stopwords.words('english')
+    tweet = re.sub(r'\$\w*', '', tweet)
+    tweet = re.sub(r'^RT[\s]+', '', tweet)
+    tweet = re.sub(r'https?:\/\/.*[\r\n]*', '', tweet)
+    tweet = re.sub(r'#', '', tweet)
+    tokenizer = TweetTokenizer(preserve_case=False, strip_handles=True,reduce_len=True)
+    tweet_tokens = tokenizer.tokenize(tweet)
 
-@app.route('/reports/hate', methods=['POST'])
-def login():
-    return method.data
+    tweets_clean = []
+    for word in tweet_tokens:
+        if (word not in stopwords_english and  
+                word not in string.punctuation): 
+            stem_word = stemmer.stem(word)
+            tweets_clean.append(stem_word)
 
+    return tweets_clean
+    
+def naive_bayes_predict(tweet, logprior, loglikelihood):
+    word_l = process_tweet(tweet)
+    p = logprior
+    for word in word_l:
+        if word in loglikelihood:
+            p += loglikelihood[word]
 
+    return p  
+    
 @app.route("/detect/hate", methods=['POST'])
-def logout():
-    y = 1
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0, stratify = None)
-    count_vect = CountVectorizer(stop_words='english')
-    transformer = TfidfTransformer(norm='l2',sublinear_tf=True)
-    x_train_counts = count_vect.fit_transform(X_train)
-    x_train_tfidf = transformer.fit_transform(x_train_counts)
-    x_test_counts = count_vect.transform(X_test)
-    x_test_tfidf = transformer.transform(x_test_counts)
-    model = load_model('svm.pkl')
-    x = model.predict(x_test_tfidf)
+def detect():
+    text = request.json['text']
+    url = 'https://translation.googleapis.com/language/translate/v2?key=AIzaSyAifjeunmPMgvz4ptXG9nJl29Wyk4GjnFk&target=en&source=pl&q='
+    url = url + text
+    response = requests.post(url, data = {})
+    json_data = json.loads(response.text)
+    translation = json_data['data']['translations'][0]['translatedText'];
+    print(translation)
+    result = naive_bayes_predict(translation, logprior, loglikelihood)
+    print(text)
+    print(result)
+    return str(result)
     
-    
-@app.route('/settings', methods=['GET', 'POST'])
-def settings():
-    if request.method == 'POST':
-        return request.data
-    return "settings"
-
 if __name__ == "__main__":
-    
     app.run(debug=True)
