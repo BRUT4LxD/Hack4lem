@@ -35,7 +35,6 @@ server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'mustache');
 server.engine('html', mustacheExpress());
 
-
 server.post("/api/messages", (req, res) => {
   adapter.processActivity(req, res, async (context) => {
     console.log("Process activity");
@@ -47,6 +46,9 @@ server.post("/tst", (req, res) => {
   console.log('REQUEST');
 });
 
+server.post("/hates", (req, res) => {
+  db.delete(req.headers.id)
+});
 
 server.get("/teacher-panel", (req, res) => {
   const hatesJson = db.JSON();

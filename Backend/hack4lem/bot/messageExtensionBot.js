@@ -130,7 +130,7 @@ class MessageExtensionBot extends TeamsActivityHandler {
         ? this.reportHater(action)
         : this.endConversation();
   }
-
+  
   reportHater(action) {
     const { hateAuthor, hateMessage, reporterComment } = action.data;
 
